@@ -8,8 +8,9 @@ import ReactQueryProvider from "@/providers/ReactQueryProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Netflix Clone",
-  description: "Netflix Clone |",
+  title: "Netyflix",
+  description: "Netflix |",
+  // You can add other metadata here
 };
 
 export default function RootLayout({
@@ -19,11 +20,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Provider>
-        <body className={inter.className} suppressHydrationWarning={true}>
+      <head>
+        <link rel="icon" href="public\favicon.ico" />
+      </head>
+      <body className={inter.className} suppressHydrationWarning={true}>
+        <Provider>
           <ReactQueryProvider>{children}</ReactQueryProvider>
-        </body>
-      </Provider>
+        </Provider>
+      </body>
     </html>
   );
 }
