@@ -1,3 +1,5 @@
+// next.config.js
+
 module.exports = async (phase, { defaultConfig }) => {
   /**
    * @type {import('next').NextConfig}
@@ -11,6 +13,10 @@ module.exports = async (phase, { defaultConfig }) => {
         },
       ],
     },
+    // Add other configurations below
+    reactStrictMode: true, // Example: Enables React Strict Mode
+    swcMinify: true, // Example: Enables SWC minification
   };
+
   return nextConfig;
 };
