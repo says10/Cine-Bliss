@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 
-// Define your image paths with 'public/' prefix
+// Define your image paths
 const imagePaths = [
-  '/public/images/default-blue.png',
-  '/public/images/default-green.png',
-  '/public/images/default-red.png',
-  '/public/images/default-slate.png',
+  '/images/default-blue.png',
+  '/images/default-green.png',
+  '/images/default-red.png',
+  '/images/default-slate.png',
   // Add more image paths as needed
 ];
 
