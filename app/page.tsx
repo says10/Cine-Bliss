@@ -5,12 +5,25 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 
+// Define your image paths with 'public/' prefix
+const imagePaths = [
+  '/public/images/default-blue.png',
+  '/public/images/default-green.png',
+  '/public/images/default-red.png',
+  '/public/images/default-slate.png',
+  // Add more image paths as needed
+];
 
-interface Props {}
+// Function to get a random image
+const getRandomImage = () => {
+  const randomIndex = Math.floor(Math.random() * imagePaths.length);
+  return imagePaths[randomIndex];
+};
 
-const Page: NextPage<Props> = ({}) => {
+const Page: NextPage = () => {
   const router = useRouter();
   const { data: session } = useSession();
+  const randomImagePath = getRandomImage(); // Get a random image path
 
   return (
     <div className='flex items-center h-screen justify-center'>
@@ -26,7 +39,7 @@ const Page: NextPage<Props> = ({}) => {
                 <Image
                   fill
                   style={{ objectFit: 'contain' }}
-                  src='/images/default-green.png'
+                  src={randomImagePath} // Use the random image path
                   alt='Profile'
                 />
               </div>
