@@ -8,8 +8,8 @@ import ReactQueryProvider from "@/providers/ReactQueryProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Netyflix",
-  description: "Netflix |",
+  title: "CineBliss",
+  description: "Cinebliss |",
   // You can add other metadata here
 };
 
