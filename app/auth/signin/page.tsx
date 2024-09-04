@@ -230,7 +230,7 @@ const Auth: NextPage<Props> = ({}) => {
             </div>
             <p className='text-neutral-400 mt-12'>
               {variant === 'login'
-                ? 'First time using Netflix?'
+                ? 'First time using CineBliss?'
                 : 'Already have an account?'}
               <span
                 onClick={toggleVariant}
