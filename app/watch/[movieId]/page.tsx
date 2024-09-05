@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/navigation";
 
-import ReactPlayer from "react-player";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { ImSpinner9 } from "react-icons/im";
 
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+
 interface Props {
   params: { movieId: string };
 }
@@ -48,7 +48,7 @@ const Watch: NextPage<Props> = ({ params }) => {
       <nav
         onMouseOver={() => setIsHover(true)}
         onMouseOut={() => setIsHover(false)}
-        className={`fixed w-full p-4 z-10 flex flex-row items-center gap-8 bg-black bg-opacity-70  duration-700 cursor-pointer ${
+        className={`fixed w-full p-4 z-10 flex flex-row items-center gap-8 bg-black bg-opacity-70 duration-700 cursor-pointer ${
           isHover ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -71,14 +71,21 @@ const Watch: NextPage<Props> = ({ params }) => {
 
       <div className="h-full w-full overflow-hidden">
         {movie && (
-          <ReactPlayer
-            width="100%"
-            height="100%"
-            controls
-            loop
-            playing
-            url={!isLoading ? movie?.videoUrl : ""}
-          />
+          <>
+            {!isLoading && movie?.videoUrl ? (
+              // Render iframe for embeddable URLs
+              <iframe
+                width="100%"
+                height="100%"
+                src={movie.videoUrl}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <ImSpinner9 className="text-white animate-spin" size={50} />
+            )}
+          </>
         )}
       </div>
     </div>
