@@ -71,25 +71,25 @@ const Watch: NextPage<Props> = ({ params }) => {
       </nav>
 
       <div className="h-full w-full overflow-hidden">
-        {movie && (
-          <>
-            {!isLoading && formattedVideoUrl ? (
-              <video
-                width="100%"
-                height="100%"
-                controls
-                src={formattedVideoUrl}
-                type="video/mp4"
-                className="object-cover"
-              >
-                Your browser does not support the video tag.
-              </video>
-            ) : (
-              <ImSpinner9 className="text-white animate-spin" size={50} />
-            )}
-          </>
-        )}
-      </div>
+  {movie && (
+    <>
+      {!isLoading && formattedVideoUrl ? (
+        <video
+          width="100%"
+          height="100%"
+          controls
+          className="object-cover"
+        >
+          <source src={formattedVideoUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <ImSpinner9 className="text-white animate-spin" size={50} />
+      )}
+    </>
+  )}
+</div>
+
     </div>
   );
 };
