@@ -3,10 +3,8 @@
 import { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/navigation";
-
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { ImSpinner9 } from "react-icons/im";
-
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
@@ -43,6 +41,9 @@ const Watch: NextPage<Props> = ({ params }) => {
     }
   }, [router, isError]);
 
+  // Ensure the video URL is properly formatted for direct playback
+  const formattedVideoUrl = movie?.videoUrl?.replace("dl=0", "raw=1");
+
   return (
     <div className="h-screen w-screen bg-black">
       <nav
@@ -72,16 +73,17 @@ const Watch: NextPage<Props> = ({ params }) => {
       <div className="h-full w-full overflow-hidden">
         {movie && (
           <>
-            {!isLoading && movie?.videoUrl ? (
-              // Render iframe for embeddable URLs
-              <iframe
+            {!isLoading && formattedVideoUrl ? (
+              <video
                 width="100%"
                 height="100%"
-                src={movie.videoUrl}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+                controls
+                src={formattedVideoUrl}
+                type="video/mp4"
+                className="object-cover"
+              >
+                Your browser does not support the video tag.
+              </video>
             ) : (
               <ImSpinner9 className="text-white animate-spin" size={50} />
             )}
